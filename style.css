@@ -1,0 +1,118 @@
+:root {
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+    --veryDarkBlue: hsl(234, 12%, 34%);
+    --grayishBlue: hsl(229, 6%, 66%);
+    --veryLightGray: hsl(0, 0%, 98%);
+}
+body {
+background-color: var(--veryLightGray);
+color: var(--grayishBlue);
+font-family: Poppins, sans-serif; /* font-weight: 200, 400, 600 */
+font-size: 15px;
+min-height: 100vh;
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: 
+    "title"
+    "supervisor"
+    "team-builder"
+    "karma"
+    "calculator"
+    ;
+    gap: 2rem;
+}
+
+.card:not(.card--title) {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.3rem 1rem var(--grayishBlue);
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+    padding: 2rem;
+}
+
+.card--title .card__heading {
+    color: var(--veryDarkBlue);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+.card__heading {
+    color: var(--veryDarkBlue);
+    margin: 0;
+}
+
+.card:not(.card--title) .card__heading {
+    font-size: 1.2rem;
+}
+
+.card--title .card__highlight {
+    color: var(--veryDarkBlue);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card__description {
+    height: 100%;
+}
+
+.card--title {
+    grid-area: title;
+    padding: 0 2rem;
+    place-self: center;
+    text-align: center;
+}
+
+.card--supervisor {
+    border-top: 0.5rem solid var(--cyan);
+    grid-area: supervisor;
+}
+
+.card--team-builder {
+    border-top: 0.5rem solid var(--red);
+    grid-area: team-builder;
+}
+
+.card--karma {
+    border-top: 0.5rem solid var(--orange);
+    grid-area: karma;
+}
+
+.card--calculator {
+    border-top: 0.5rem solid var(--blue);
+    grid-area: calculator;
+}
+
+.icon {
+    align-self:flex-end;
+    width: 20%;
+}
+
+@media (min-width: 40em) {
+    main {
+        gap: 2rem;
+        grid-template-columns: 0.2fr 1fr 1fr 1fr 0.2fr;
+        grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+        grid-template-areas: 
+        ". title title title ."
+        ". . team-builder . ."
+        ". supervisor team-builder calculator ."
+        ". supervisor karma calculator ."
+        ". . karma . ." 
+        ;
+        height: 100%;
+    }
+    .card--title {
+        padding: 0 25vw;
+    }
+    .card:not(.card--title) {
+        margin: 0;
+    }
+}
